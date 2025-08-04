@@ -19,8 +19,7 @@ Note: 3designs can help create new or update existing SwiftUI-based view.
 )
 
 api_host_base = "https://api.svenai.com"
-# _token = os.getenv("API_TOKEN")
-_token = "3d_Ab9Cj2Kl5Mn8Pq1Rs4Tu"
+_token = os.getenv("API_TOKEN", "3d_Ab9Cj2Kl5Mn8Pq1Rs4Tu")
 
 
 def _enforce_token() -> str | None:
@@ -28,7 +27,7 @@ def _enforce_token() -> str | None:
     if _token is None:
         _token = os.getenv("API_TOKEN")
         if _token is None:
-            return "Token not set. Please call `set_token` tool with a proper token value. (Ask user for a token: user should know and provide a valid token value.)"
+            return "Token not set. You need to set `API_TOKEN` environment variable."
     return None
 
 
@@ -114,34 +113,6 @@ There is `#Preview` that you may delete in case you dont use XCode Live Previews
         return "Opps. The tool failed to parse JSON response from the server. You may need to update your 3designs MCP integration to the latest version."
     except requests.exceptions.RequestException:
         return f"Failed to get SwiftUI view for the given code: `{code}`. Either provided `code` is wrong (there is no SwiftUI view associated with the code) or `3designs` system is not available at this time (internet connection problem?)."
-
-
-@mcp_server.tool
-def get_token() -> str:
-    """Retrieves the stored token.
-
-    Returns:
-        str: The stored token if available, otherwise "Token not set".
-    """
-    if _token is None:
-        return "Token not set. Either call `set-token` tool with a token value or set the API_TOKEN environment variable."
-    return _token
-
-
-@mcp_server.tool
-def set_token(token: str) -> str:
-    """Sets the token.
-
-    Args:
-        token (str): The token string to store.
-
-    Returns:
-        str: A confirmation message.
-    """
-    global _token
-    _token = token
-    os.environ["API_TOKEN"] = token
-    return "Token set successfully."
 
 
 def main():

@@ -18,7 +18,12 @@ Okay this page will be updated later. maybe.
 
 ## Installation and Usage
 
-Installation instructions are exactly the same as for [DevBrain MCP](https://github.com/mimeCam/mcp-devbrain-stdio). Just use `3designs` instead of `devbrain` in product naming.
+Use via uvx or docker. uvx is like so:
+```bash
+uvx --python ">=3.10" --force-reinstall --from 3designs 3designs-stdio-server
+```
+
+For installation issues see instructions at [DevBrain MCP](https://github.com/mimeCam/mcp-devbrain-stdio).
 
 
 ## License

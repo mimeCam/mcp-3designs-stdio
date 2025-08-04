@@ -9,7 +9,7 @@ fi
 
 cd "$(dirname "$0")"
 
-VERSION="1.0.0"
+VERSION="1.0.1"
 
 IMAGE_NAME_ROOT="svenai/mcp-3designs-stdio"
 IMAGE_NAME_VERSION="$IMAGE_NAME_ROOT:$VERSION"
